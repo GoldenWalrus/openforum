@@ -1,0 +1,12 @@
+<head>
+  <title>Openforum Main Page</title>
+</head>
+<body>
+  {% if question_list %}
+  {% for question in question_list %}
+  <p>{{ question.questiontext }}</p>
+  {% endfor %}
+  {% else %}
+  <p>Nothing to see here</p>
+  {% endif %}
+</body>
