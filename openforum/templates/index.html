@@ -1,12 +1,14 @@
 <head>
-  <title>Openforum Main Page</title>
+  <title>OpenForum Main Page</title>
 </head>
 <body>
-  {% if question_list %}
-  {% for question in question_list %}
-  <p>{{ question.questiontext }}</p>
+  <div>
+  {% if board_list %}
+  {% for board in board_list %}
+  <p><a href="#">{{ board }}</a></p>
   {% endfor %}
   {% else %}
-  <p>Nothing to see here</p>
+  <p>No available boards to display</p>
   {% endif %}
+  </div>
 </body>

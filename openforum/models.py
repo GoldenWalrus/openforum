@@ -1,5 +1,12 @@
 from django.db import models
 
+class Board(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=200)
+    # class methods
+    def __unicode__(self):
+        return self.name
+
 class User(models.Model):
     name = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
@@ -9,8 +16,10 @@ class User(models.Model):
 
 class Question(models.Model):
     questiontext = models.CharField(max_length=200)
+    questionnumber = models.IntegerField(default=0)
     date = models.DateTimeField('date published')
     author = models.ForeignKey(User)
+    board = models.ForeignKey(Board)
     # class methods
     def __unicode__(self):
         return self.questiontext

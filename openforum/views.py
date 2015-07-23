@@ -1,13 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from openforum.models import User, Question, Response
+from openforum.models import User, Question, Response, Board
 
 def index(request):
-    # worry about authenticating user later
-    question_list = Question.objects.order_by('-date')[:5]
-    return render(request, 'index.html', {'question_list' : question_list })
+    # get a list of all boards
+    board_list = Board.objects.all()
+    return render(request, 'index.html', {'board_list', board_list})
 
-def detail(request):
+def board(request):
+    # worry about authenticating user later
+    # get the board name
+    return render(request, 'board.html', {'question_list' : question_list, 'board_name' : board_name })
+
+def question(request):
     return HttpResponse('You are looking at a post in detail')
 
 def respond(request):

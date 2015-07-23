@@ -1,0 +1,12 @@
+<head>
+  <title>{{ board_name }}</title>
+</head>
+<body>
+  {% if question_list %}
+  {% for question in question_list %}
+  <p><a href="#">{{ question.questiontext }}</a></p>
+  {% endfor %}
+  {% else %}
+  <p>No available questions</p>
+  {% endif %}
+</body>
