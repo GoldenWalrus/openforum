@@ -1,0 +1,13 @@
+<head>
+  <title>{{ boardname }} - {{ text }}</title>
+</head>
+<body>
+  <h2>{{ text }}</h2>
+  {% if response_list %}
+  {% for response in response_list %}
+  <p>{{ response.responsetext }}</p>
+  {% endfor %}
+  {% else %}
+  <p>There are no responses to show</p>
+  {% endif %}
+</body>

@@ -4,7 +4,7 @@
 <body>
   {% if question_list %}
   {% for question in question_list %}
-  <p><a href="#">{{ question.questiontext }}</a></p>
+  <p><a href="/opeforum/{{board_name}}/{{question.questionnumber}}/">{{ question.questiontext }}</a></p>
   {% endfor %}
   {% else %}
   <p>No available questions</p>

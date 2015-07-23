@@ -5,7 +5,7 @@
   <div>
   {% if board_list %}
   {% for board in board_list %}
-  <p><a href="#">{{ board }}</a></p>
+  <p><a href="/openforum/{{board.name}}/">{{ board.name }}</a></p>
   {% endfor %}
   {% else %}
   <p>No available boards to display</p>
