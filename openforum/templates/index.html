@@ -2,6 +2,10 @@
   <title>OpenForum Main Page</title>
 </head>
 <body>
+  {% if error_message %}
+  <p>{{ error_message }}</p>
+  {% endif %}
+  {% include 'login.html' %}
   <div>
   {% if board_list %}
   {% for board in board_list %}

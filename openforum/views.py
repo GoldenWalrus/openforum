@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from openforum.models import User, Question, Response, Board
+import hashlib, smtplib # hash and mail functions
 
 def index(request):
     # get a list of all boards
@@ -26,6 +27,25 @@ def question(request, boardname, questionid):
     except Question.DoesNotExist:
         raise Http404("Question does not exist")
     # USE RENDER TO PASS CONTEXT IF THERE IS AN ERRROR! DONT REDIRECT
+
+def login(request):
+    try:
+        result = User.objects.get(name=request.POST['username'], password=hashlib.sha224(request.POST['password']).hexdigest())
+        request.session['username'] = request.POST['username']
+        return HttpResponseRedirect('/openforum/')
+    except User.DoesNotExist:
+        return render(request, 'index.html', {'error_message' : 'Your username and password combination was incorrect'})
+
+def register(request):
+    return render(request, 'register.html')
+
+def makeaccount(request):
+    try:
+        newuser = User(name=request.POST['username'], password=request.POST['password'], email=request.POST['email'], verification_code=hashlib.md5(request.POST['username']).hexdigest())
+        newuser.save()
+        return HttpResponseRedirect('/openforum/')
+    except KeyError:
+        return render(request, 'index.html', {'error_message' : 'There was an error registering your account. Please try again.'})
 
 def respond(request):
     # create a new Response

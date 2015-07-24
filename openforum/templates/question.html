@@ -2,6 +2,7 @@
   <title>{{ boardname }} - {{ text }}</title>
 </head>
 <body>
+  {% include 'login.html' %}
   <h2>{{ text }}</h2>
   {% if response_list %}
   {% for response in response_list %}

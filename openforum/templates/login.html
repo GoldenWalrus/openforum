@@ -1,0 +1,7 @@
+<form name="login" method="post" action='/openforum/login/'>
+  {% csrf_token %}
+  <input type='text' name='username' id='username' placeholder="Username"/>
+  <input type='password' name='password' id="password" placeholder="Password"/>
+  <button type='submit' onclick='LoginValidate()'>Login</button>
+</form>
+<h5>Don't have an account with us? Register right <a href="/openforum/register/">here</a> for free!</h5>
