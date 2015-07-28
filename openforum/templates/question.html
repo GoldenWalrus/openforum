@@ -1,7 +1,7 @@
 <head>
   <title>{{ boardname }} - {{ text }}</title>
 </head>
-<body>
+<body class="{{ theme }}">
   {% include 'login.html' %}
   <h2>{{ text }}</h2>
   {% if response_list %}

@@ -1,11 +1,11 @@
 <head>
   <title>{{ board_name }}</title>
 </head>
-<body>
+<body class='{{ theme }}'>
   {% include 'login.html' %}
   {% if question_list %}
   {% for question in question_list %}
-  <p><a href="/openforum/{{board_name}}/{{question.questionnumber}}/">{{ question.questiontext }}</a></p>
+  <p><a href="/openforum/{{board_name}}/{{question.pk}}/">{{ question.questiontext }}</a></p>
   {% endfor %}
   {% else %}
   <p>No available questions</p>
