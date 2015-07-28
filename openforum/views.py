@@ -41,7 +41,7 @@ def register(request):
 
 def makeaccount(request):
     try:
-        newuser = User(name=request.POST['username'], password=request.POST['password'], email=request.POST['email'], verification_code=hashlib.md5(request.POST['username']).hexdigest())
+        newuser = User(name=request.POST['username'], password=hashlib.sha224(request.POST['password1']).hexdigest(), email=request.POST['email'], verification_code=hashlib.md5(request.POST['username']).hexdigest())
         newuser.save()
         return HttpResponseRedirect('/openforum/')
     except KeyError:
