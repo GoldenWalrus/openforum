@@ -56,12 +56,20 @@ def makeaccount(request):
 
 def respond(request):
     # create a new Response
-    return HttpResponse('You are responding to a question')
+    try:
+        return 0
+        #newresponse = Response(question='fasdfdasf' ,responsetext=)
+    except:
+        return HttpResponse('YOU FAIL!')
 
 def ask(request):
     # create a new post
-    return HttpResponse('You are asking a question')
+    try:
+        newquestion = Question(questiontext=request.POST['questiontext'], date=timezone.now(), author=request.session['username'], board='13041304')
+        newquestion.save()
+    except:
+        return render(request, 'index.html', {'error_message' : 'There was an error creating your post. Sorry about that.', 'theme' : 'default'})
 
 def logout(request):
     request.session['username'] = ''
-    return HttpResponseRedirect('/portal/') # portal will be handled in a separate app
+    return HttpResponseRedirect('/portal/')

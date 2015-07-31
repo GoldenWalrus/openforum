@@ -1,7 +1,10 @@
 <head>
   <title>Register your account</title>
+  {% include 'header.html' %}
 </head>
 <body class="{{ theme }}">
+  {% include 'nav.html' %}
+  <div class='container'>
   <h2>Register with us!</h2>
   <form name='register' method="post" action='/openforum/makeaccount/'>
     {% csrf_token %}
@@ -11,4 +14,5 @@
     <input type='email' name='email' id='email' placeholder="E-Mail address"/>
     <button type='submit' onclick="RegisterValidate()">Submit</button>
   </form>
+</div>
 </body>

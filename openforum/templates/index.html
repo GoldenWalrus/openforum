@@ -1,11 +1,16 @@
 <head>
   <title>OpenForum Main Page</title>
+  {% include 'header.html' %}
 </head>
 <body class='{{ theme }}'>
+  {% include 'nav.html' %}
+  <div class='container'>
   {% if error_message %}
-  <p>{{ error_message }}</p>
+  <div class='alert alert-danger'><p>{{ error_message }}</p></div>
   {% endif %}
+  <div class='col-xs-3'>
   {% include 'login.html' %}
+</div>
   <div>
   {% if board_list %}
   {% for board in board_list %}
@@ -15,4 +20,5 @@
   <p>No available boards to display</p>
   {% endif %}
   </div>
+</div>
 </body>

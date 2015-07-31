@@ -1,7 +1,9 @@
 <head>
   <title>{{ board_name }}</title>
+  {% include 'header.html' %}
 </head>
 <body class='{{ theme }}'>
+  {% include 'nav.html' %}
   {% include 'login.html' %}
   {% if question_list %}
   {% for question in question_list %}

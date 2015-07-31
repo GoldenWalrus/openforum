@@ -1,7 +1,9 @@
 <head>
   <title>{{ boardname }} - {{ text }}</title>
+  {% include 'header.html' %}
 </head>
 <body class="{{ theme }}">
+  {% include 'nav.html' %}
   {% include 'login.html' %}
   <h2>{{ text }}</h2>
   {% if response_list %}
@@ -11,4 +13,6 @@
   {% else %}
   <p>There are no responses to show</p>
   {% endif %}
+  <form method='post'>
+  </form>
 </body>
